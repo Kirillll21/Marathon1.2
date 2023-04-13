@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Marathon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Autorization.xaml
+    /// Логика взаимодействия для RunnerPages.xaml
     /// </summary>
-    public partial class Autorization : Window
+    public partial class RunnerPages : Page
     {
-        public Autorization()
+        public RunnerPages()
         {
             InitializeComponent();
         }

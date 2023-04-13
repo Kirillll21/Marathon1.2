@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\FrameApp.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,28 +68,56 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Autorization.xaml">
+    <Page Include="Pages\AdmnPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\DeatailedInformation.xaml">
+    <Page Include="Pages\CoordinatorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Login.xaml">
+    <Page Include="Pages\DeatailedInf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EnterInf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MarathonInfor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RunnerPages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\Autorization.xaml.cs">
-      <DependentUpon>Autorization.xaml</DependentUpon>
+    <Compile Include="Pages\AdmnPage.xaml.cs">
+      <DependentUpon>AdmnPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\DeatailedInformation.xaml.cs">
-      <DependentUpon>DeatailedInformation.xaml</DependentUpon>
+    <Compile Include="Pages\CoordinatorPage.xaml.cs">
+      <DependentUpon>CoordinatorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="Pages\DeatailedInf.xaml.cs">
+      <DependentUpon>DeatailedInf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EnterInf.xaml.cs">
+      <DependentUpon>EnterInf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MarathonInfor.xaml.cs">
+      <DependentUpon>MarathonInfor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RunnerPages.xaml.cs">
+      <DependentUpon>RunnerPages.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

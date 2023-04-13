@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Marathon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для DeatailedInformation.xaml
+    /// Логика взаимодействия для MarathonInfor.xaml
     /// </summary>
-    public partial class DeatailedInformation : Window
+    public partial class MarathonInfor : Page
     {
-        public DeatailedInformation()
+        public MarathonInfor()
         {
             InitializeComponent();
         }

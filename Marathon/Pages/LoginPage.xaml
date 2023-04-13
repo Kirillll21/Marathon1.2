@@ -1,0 +1,95 @@
+﻿<Window x:Class="Marathon.Pages.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Marathon.Pages"
+        mc:Ignorable="d"
+        Title="LoginPage" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="300*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="LightSeaGreen" Orientation="Horizontal" >
+            <Button Content="Назад"
+                    Height="25"
+                    Width="55"
+                    HorizontalAlignment="Left"
+                    Margin="10,10,0,0"
+                    FontSize="13"
+                    Template="{DynamicResource ButtonBaseControlTemplate1}" Click="Button_Click"/>
+
+            <TextBlock Text="MARATHON SKILLS 2016"
+                       Foreground="White"
+                       FontSize="23"
+                       FontWeight="Bold"
+                       Margin="20,10,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel HorizontalAlignment="Center" Margin="20">
+                <TextBlock Text="Форма авторизации"
+                       FontSize="24"/>
+                <TextBlock TextWrapping="Wrap"
+                           Width="590"
+                           FontSize="16"
+                           Text="Пожалуйста, авторизуйтесь в системе, используя ваш адрес электронной почты и пароль."/>
+            </StackPanel>
+
+            
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="20"
+                        HorizontalAlignment="Center"
+                        >
+
+                <TextBlock Text="Email:  "/>
+                <TextBox Height="25" Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        >
+
+                <TextBlock Text="Password:" Margin="0,0,10,0"/>
+                <PasswordBox Height="25" Width="300"
+                             Margin="0,0,20,0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,75,0">
+                <Button Name="LoginBtn" Click="LoginBtn_Click" Width="80" Height="25" Template="{DynamicResource ButtonBaseControlTemplate1}">
+                    <Button.Content>
+                        <TextBlock Text="Login"
+                                   FontSize="15"
+                                   FontFamily="Times New Roman"/>
+                    </Button.Content>
+                </Button>
+
+                <Button Width="80" Height="25" Margin="20,0,0,0" Template="{DynamicResource ButtonBaseControlTemplate1}">
+                    <Button.Content>
+                        <TextBlock Text="Cancel"
+                                   FontSize="15"
+                                   FontFamily="Times New Roman"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Background="LightSeaGreen">
+            <TextBlock Text="18 дней 8 часов и 17 минут до старта марафона!"
+                       Foreground="White"
+                       FontSize="13"
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0"/>
+
+        </StackPanel>
+        <Frame x:Name="Frm" Grid.Row="1" Navigated="Frm_Navigated">
+            
+        </Frame>
+    </Grid>
+</Window>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Marathon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Login.xaml
+    /// Логика взаимодействия для EnterInf.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class EnterInf : Page
     {
-        public Login()
+        public EnterInf()
         {
             InitializeComponent();
         }

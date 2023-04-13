@@ -1,5 +1,4 @@
-﻿using Marathon.Pages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,25 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Marathon
+namespace Marathon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для DeatailedInf.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DeatailedInf : Page
     {
-        public MainWindow()
+        public DeatailedInf()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-            MainWindow mainWindow = new MainWindow();
-            LoginPage login = new LoginPage();
-            login.Show();
-            this.Close();
         }
     }
 }

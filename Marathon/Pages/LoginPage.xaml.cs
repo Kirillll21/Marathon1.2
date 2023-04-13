@@ -1,4 +1,4 @@
-﻿using Marathon.Pages;
+﻿using Marathon.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +11,34 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Marathon
+namespace Marathon.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginPage : Window
     {
-        public MainWindow()
+        public LoginPage()
         {
             InitializeComponent();
+            FrameApp.frmObj = Frm;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            MainWindow mainWindow = new MainWindow();
-            LoginPage login = new LoginPage();
-            login.Show();
-            this.Close();
+            Frm.GoBack();
+        }
+
+        private void Frm_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
