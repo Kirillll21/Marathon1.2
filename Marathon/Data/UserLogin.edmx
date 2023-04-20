@@ -254,14 +254,6 @@
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "marathon.dbo.UserLogin" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="UserLogin">
-          <Key>
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Password" />
-          </Key>
-          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "marathon.dbo.Volunteer" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Volunteer">
@@ -405,12 +397,6 @@
     [Timesheet].[EndDateTime] AS [EndDateTime], 
     [Timesheet].[PayAmount] AS [PayAmount]
     FROM [dbo].[Timesheet] AS [Timesheet]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserLogin].[Email] AS [Email], 
-    [UserLogin].[Password] AS [Password]
-    FROM [dbo].[UserLogin] AS [UserLogin]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -644,14 +630,6 @@
           <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PayAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityType Name="UserLogin">
-          <Key>
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="Password" />
-          </Key>
-          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="Volunteer">
           <Key>
             <PropertyRef Name="VolunteerId" />
@@ -685,7 +663,6 @@
           <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" />
           <EntitySet Name="Staff" EntityType="Self.Staff" />
           <EntitySet Name="Timesheet" EntityType="Self.Timesheet" />
-          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" />
           <EntitySet Name="Volunteer" EntityType="Self.Volunteer" />
         </EntityContainer>
       </Schema>
@@ -877,14 +854,6 @@
                 <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
                 <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
                 <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserLogin">
-            <EntityTypeMapping TypeName="marathonModel.UserLogin">
-              <MappingFragment StoreEntitySet="UserLogin">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

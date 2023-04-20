@@ -43,7 +43,6 @@ namespace Marathon.Data
         public virtual DbSet<Sponsorship> Sponsorship { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<Timesheet> Timesheet { get; set; }
-        public virtual DbSet<UserLogin> UserLogin { get; set; }
         public virtual DbSet<Volunteer> Volunteer { get; set; }
     }
 }

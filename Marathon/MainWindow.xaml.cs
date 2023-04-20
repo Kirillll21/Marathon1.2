@@ -1,5 +1,6 @@
 ﻿using Marathon.Data;
 using Marathon.Pages;
+using Marathon.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,10 @@ namespace Marathon
         {
             InitializeComponent();
             DbConnect.entObj = new marathonEntities1();
+
+            FrameApp.frmObj = FrmMain;
+            
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,6 +40,17 @@ namespace Marathon
             LoginPage login = new LoginPage();
             login.Show();
             this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Content = null;
+            FrameApp.frmObj.Navigate(new EnterInf());
+        }
+
+        private void FrmMain_Navigated(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }

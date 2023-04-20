@@ -10,5 +10,6 @@ namespace Marathon.Resources
     class FrameApp
     {
         public static Frame frmObj;
+        
     }
 }
