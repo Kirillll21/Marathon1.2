@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Marathon.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,30 @@ namespace Marathon
         public RegistrationPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (DbConnect.entObj.User.Count(x => x.Email == TxbEmail.Text) > 0)
+            {
+                MessageBox.Show("Такой email уже используется!",
+                    "Уведомление",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            else
+            {
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+
+                    
+                }
+            }
+
         }
     }
 }

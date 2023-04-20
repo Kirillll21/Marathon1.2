@@ -103,7 +103,8 @@
                     FontFamily="Arial"
                     Height="60"
                     Width="300"
-                    Margin="0,20,0,0"/>
+                    Margin="0,20,0,0"
+                    />
 
 
             <Button Content="Я хочу узнать больше о событии"
@@ -111,12 +112,14 @@
                     FontFamily="Arial"
                     Height="60"
                     Width="300"
-                    Margin="0,20,0,0"/>
+                    Margin="0,20,0,0"
+                    Name="BtnDetailed"/>
 
             <Button Content="Login"
                     Height="30"
                     Width="80"
                     HorizontalAlignment="Right"
+                    
                     Margin="30,0,0,0" Click="Button_Click"/>
 
         </StackPanel>

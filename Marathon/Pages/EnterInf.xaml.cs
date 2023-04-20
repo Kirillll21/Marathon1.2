@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Marathon.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Marathon.Pages
         public EnterInf()
         {
             InitializeComponent();
+        }
+
+        private void NewRunner_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frmObj.Navigate(new RegistrationPage());
         }
     }
 }
