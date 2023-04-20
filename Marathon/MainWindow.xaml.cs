@@ -1,4 +1,5 @@
-﻿using Marathon.Pages;
+﻿using Marathon.Data;
+using Marathon.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Marathon
         public MainWindow()
         {
             InitializeComponent();
+            DbConnect.entObj = new marathonEntities1();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

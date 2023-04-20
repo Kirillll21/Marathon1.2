@@ -1,0 +1,925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище marathonModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Charity">
+          <Key>
+            <PropertyRef Name="CharityId" />
+          </Key>
+          <Property Name="CharityId" Type="int" Nullable="false" />
+          <Property Name="CharityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CharityDescription" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CharityLogo" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Country" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="CountryName" />
+            <PropertyRef Name="CountryFlag" />
+          </Key>
+          <Property Name="CountryCode" Type="int" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryFlag" Type="image" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Event" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="EventName" />
+            <PropertyRef Name="EventTypeId" />
+            <PropertyRef Name="MarathonId" />
+            <PropertyRef Name="StartDateTime" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="MaxParticipants" />
+          </Key>
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="EventTypeId" Type="int" Nullable="false" />
+          <Property Name="MarathonId" Type="int" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MaxParticipants" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.EventType" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="EventTypeId" />
+            <PropertyRef Name="EventTypeName" />
+          </Key>
+          <Property Name="EventTypeId" Type="int" Nullable="false" />
+          <Property Name="EventTypeName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Gender" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Marathon" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Marathon">
+          <Key>
+            <PropertyRef Name="MarathonId" />
+            <PropertyRef Name="MarathonName" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="YearHeld" />
+          </Key>
+          <Property Name="MarathonId" Type="int" Nullable="false" />
+          <Property Name="MarathonName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CountryCode" Type="int" Nullable="false" />
+          <Property Name="YearHeld" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Position" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PositionId" />
+            <PropertyRef Name="PositionName" />
+            <PropertyRef Name="PositionDescription" />
+            <PropertyRef Name="PayPeriod" />
+            <PropertyRef Name="PayRate" />
+          </Key>
+          <Property Name="PositionId" Type="int" Nullable="false" />
+          <Property Name="PositionName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="PositionDescription" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="PayPeriod" Type="datetime" Nullable="false" />
+          <Property Name="PayRate" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.RaceKitOption" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="RaceKitOption">
+          <Key>
+            <PropertyRef Name="RaceKitOptionId" />
+            <PropertyRef Name="RaceKitOption" />
+            <PropertyRef Name="Cost" />
+          </Key>
+          <Property Name="RaceKitOptionId" Type="int" Nullable="false" />
+          <Property Name="RaceKitOption" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Registration" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+            <PropertyRef Name="RunnerId" />
+            <PropertyRef Name="RegistrationDateTime" />
+            <PropertyRef Name="RaceKitOptionId" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="CharityId" />
+            <PropertyRef Name="SponsorshipTarget" />
+          </Key>
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="RunnerId" Type="int" Nullable="false" />
+          <Property Name="RegistrationDateTime" Type="datetime" Nullable="false" />
+          <Property Name="RaceKitOptionId" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CharityId" Type="int" Nullable="false" />
+          <Property Name="SponsorshipTarget" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Registration_Event" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Registration_Event">
+          <Key>
+            <PropertyRef Name="RegistrationEventId" />
+            <PropertyRef Name="RegistrationId" />
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="BibNumber" />
+            <PropertyRef Name="RaceTime" />
+          </Key>
+          <Property Name="RegistrationEventId" Type="int" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="BibNumber" Type="int" Nullable="false" />
+          <Property Name="RaceTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.RegistrationStatus" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="RegistrationStatus">
+          <Key>
+            <PropertyRef Name="RegistrationStatusId" />
+            <PropertyRef Name="RegistrationStatus" />
+          </Key>
+          <Property Name="RegistrationStatusId" Type="int" Nullable="false" />
+          <Property Name="RegistrationStatus" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Role" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoldeId" />
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoldeId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Runner" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Runner">
+          <Key>
+            <PropertyRef Name="RunnerId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="RunnerId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="CountryCode" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Sponsorship" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Sponsorship">
+          <Key>
+            <PropertyRef Name="SponsorshipId" />
+            <PropertyRef Name="SponsorName" />
+            <PropertyRef Name="RegistrationId" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="SponsorshipId" Type="int" Nullable="false" />
+          <Property Name="SponsorName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Staff" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="PositionId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Comments" />
+          </Key>
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PositionId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Timesheet" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Timesheet">
+          <Key>
+            <PropertyRef Name="TimesheetId" />
+            <PropertyRef Name="StaffId" />
+            <PropertyRef Name="StartDateTime" />
+            <PropertyRef Name="EndDateTime" />
+            <PropertyRef Name="PayAmount" />
+          </Key>
+          <Property Name="TimesheetId" Type="int" Nullable="false" />
+          <Property Name="StaffId" Type="int" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+          <Property Name="PayAmount" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.UserLogin" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Email" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "marathon.dbo.Volunteer" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="VolunteerId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="Lastname" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="VolunteerId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryCode" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Хранилище marathonModelContainer">
+          <EntitySet Name="Charity" EntityType="Self.Charity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Country].[CountryCode] AS [CountryCode], 
+    [Country].[CountryName] AS [CountryName], 
+    [Country].[CountryFlag] AS [CountryFlag]
+    FROM [dbo].[Country] AS [Country]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Event" EntityType="Self.Event" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Event].[EventId] AS [EventId], 
+    [Event].[EventName] AS [EventName], 
+    [Event].[EventTypeId] AS [EventTypeId], 
+    [Event].[MarathonId] AS [MarathonId], 
+    [Event].[StartDateTime] AS [StartDateTime], 
+    [Event].[Cost] AS [Cost], 
+    [Event].[MaxParticipants] AS [MaxParticipants]
+    FROM [dbo].[Event] AS [Event]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EventType" EntityType="Self.EventType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventType].[EventTypeId] AS [EventTypeId], 
+    [EventType].[EventTypeName] AS [EventTypeName]
+    FROM [dbo].[EventType] AS [EventType]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Gender" EntityType="Self.Gender" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Gender].[Gender] AS [Gender]
+    FROM [dbo].[Gender] AS [Gender]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Marathon" EntityType="Self.Marathon" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Marathon].[MarathonId] AS [MarathonId], 
+    [Marathon].[MarathonName] AS [MarathonName], 
+    [Marathon].[CityName] AS [CityName], 
+    [Marathon].[CountryCode] AS [CountryCode], 
+    [Marathon].[YearHeld] AS [YearHeld]
+    FROM [dbo].[Marathon] AS [Marathon]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Position" EntityType="Self.Position" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Position].[PositionId] AS [PositionId], 
+    [Position].[PositionName] AS [PositionName], 
+    [Position].[PositionDescription] AS [PositionDescription], 
+    [Position].[PayPeriod] AS [PayPeriod], 
+    [Position].[PayRate] AS [PayRate]
+    FROM [dbo].[Position] AS [Position]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RaceKitOption" EntityType="Self.RaceKitOption" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RaceKitOption].[RaceKitOptionId] AS [RaceKitOptionId], 
+    [RaceKitOption].[RaceKitOption] AS [RaceKitOption], 
+    [RaceKitOption].[Cost] AS [Cost]
+    FROM [dbo].[RaceKitOption] AS [RaceKitOption]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Registration" EntityType="Self.Registration" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Registration].[RegistrationId] AS [RegistrationId], 
+    [Registration].[RunnerId] AS [RunnerId], 
+    [Registration].[RegistrationDateTime] AS [RegistrationDateTime], 
+    [Registration].[RaceKitOptionId] AS [RaceKitOptionId], 
+    [Registration].[Cost] AS [Cost], 
+    [Registration].[CharityId] AS [CharityId], 
+    [Registration].[SponsorshipTarget] AS [SponsorshipTarget]
+    FROM [dbo].[Registration] AS [Registration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Registration_Event" EntityType="Self.Registration_Event" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Registration_Event].[RegistrationEventId] AS [RegistrationEventId], 
+    [Registration_Event].[RegistrationId] AS [RegistrationId], 
+    [Registration_Event].[EventId] AS [EventId], 
+    [Registration_Event].[BibNumber] AS [BibNumber], 
+    [Registration_Event].[RaceTime] AS [RaceTime]
+    FROM [dbo].[Registration_Event] AS [Registration_Event]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RegistrationStatus" EntityType="Self.RegistrationStatus" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RegistrationStatus].[RegistrationStatusId] AS [RegistrationStatusId], 
+    [RegistrationStatus].[RegistrationStatus] AS [RegistrationStatus]
+    FROM [dbo].[RegistrationStatus] AS [RegistrationStatus]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Role" EntityType="Self.Role" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Role].[RoldeId] AS [RoldeId], 
+    [Role].[RoleName] AS [RoleName]
+    FROM [dbo].[Role] AS [Role]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Runner" EntityType="Self.Runner" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Runner].[RunnerId] AS [RunnerId], 
+    [Runner].[Email] AS [Email], 
+    [Runner].[Gender] AS [Gender], 
+    [Runner].[DateOfBirth] AS [DateOfBirth], 
+    [Runner].[CountryCode] AS [CountryCode]
+    FROM [dbo].[Runner] AS [Runner]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sponsorship].[SponsorshipId] AS [SponsorshipId], 
+    [Sponsorship].[SponsorName] AS [SponsorName], 
+    [Sponsorship].[RegistrationId] AS [RegistrationId], 
+    [Sponsorship].[Amount] AS [Amount]
+    FROM [dbo].[Sponsorship] AS [Sponsorship]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Staff" EntityType="Self.Staff" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Staff].[StaffId] AS [StaffId], 
+    [Staff].[FirstName] AS [FirstName], 
+    [Staff].[LastName] AS [LastName], 
+    [Staff].[DateOfBirth] AS [DateOfBirth], 
+    [Staff].[Gender] AS [Gender], 
+    [Staff].[PositionId] AS [PositionId], 
+    [Staff].[Email] AS [Email], 
+    [Staff].[Comments] AS [Comments]
+    FROM [dbo].[Staff] AS [Staff]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Timesheet" EntityType="Self.Timesheet" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Timesheet].[TimesheetId] AS [TimesheetId], 
+    [Timesheet].[StaffId] AS [StaffId], 
+    [Timesheet].[StartDateTime] AS [StartDateTime], 
+    [Timesheet].[EndDateTime] AS [EndDateTime], 
+    [Timesheet].[PayAmount] AS [PayAmount]
+    FROM [dbo].[Timesheet] AS [Timesheet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserLogin].[Email] AS [Email], 
+    [UserLogin].[Password] AS [Password]
+    FROM [dbo].[UserLogin] AS [UserLogin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Volunteer" EntityType="Self.Volunteer" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Volunteer].[VolunteerId] AS [VolunteerId], 
+    [Volunteer].[FirstName] AS [FirstName], 
+    [Volunteer].[Lastname] AS [Lastname], 
+    [Volunteer].[CountryCode] AS [CountryCode], 
+    [Volunteer].[Gender] AS [Gender]
+    FROM [dbo].[Volunteer] AS [Volunteer]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="marathonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Charity">
+          <Key>
+            <PropertyRef Name="CharityId" />
+          </Key>
+          <Property Name="CharityId" Type="Int32" Nullable="false" />
+          <Property Name="CharityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CharityDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CharityLogo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="CountryName" />
+            <PropertyRef Name="CountryFlag" />
+          </Key>
+          <Property Name="CountryCode" Type="Int32" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryFlag" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="EventName" />
+            <PropertyRef Name="EventTypeId" />
+            <PropertyRef Name="MarathonId" />
+            <PropertyRef Name="StartDateTime" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="MaxParticipants" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="EventName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EventTypeId" Type="Int32" Nullable="false" />
+          <Property Name="MarathonId" Type="Int32" Nullable="false" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MaxParticipants" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="EventTypeId" />
+            <PropertyRef Name="EventTypeName" />
+          </Key>
+          <Property Name="EventTypeId" Type="Int32" Nullable="false" />
+          <Property Name="EventTypeName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Gender1" />
+          </Key>
+          <Property Name="Gender1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marathon">
+          <Key>
+            <PropertyRef Name="MarathonId" />
+            <PropertyRef Name="MarathonName" />
+            <PropertyRef Name="CityName" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="YearHeld" />
+          </Key>
+          <Property Name="MarathonId" Type="Int32" Nullable="false" />
+          <Property Name="MarathonName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryCode" Type="Int32" Nullable="false" />
+          <Property Name="YearHeld" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="PositionId" />
+            <PropertyRef Name="PositionName" />
+            <PropertyRef Name="PositionDescription" />
+            <PropertyRef Name="PayPeriod" />
+            <PropertyRef Name="PayRate" />
+          </Key>
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+          <Property Name="PositionName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PositionDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PayPeriod" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RaceKitOption">
+          <Key>
+            <PropertyRef Name="RaceKitOptionId" />
+            <PropertyRef Name="RaceKitOption1" />
+            <PropertyRef Name="Cost" />
+          </Key>
+          <Property Name="RaceKitOptionId" Type="Int32" Nullable="false" />
+          <Property Name="RaceKitOption1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+            <PropertyRef Name="RunnerId" />
+            <PropertyRef Name="RegistrationDateTime" />
+            <PropertyRef Name="RaceKitOptionId" />
+            <PropertyRef Name="Cost" />
+            <PropertyRef Name="CharityId" />
+            <PropertyRef Name="SponsorshipTarget" />
+          </Key>
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="RunnerId" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RaceKitOptionId" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="CharityId" Type="Int32" Nullable="false" />
+          <Property Name="SponsorshipTarget" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration_Event">
+          <Key>
+            <PropertyRef Name="RegistrationEventId" />
+            <PropertyRef Name="RegistrationId" />
+            <PropertyRef Name="EventId" />
+            <PropertyRef Name="BibNumber" />
+            <PropertyRef Name="RaceTime" />
+          </Key>
+          <Property Name="RegistrationEventId" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="BibNumber" Type="Int32" Nullable="false" />
+          <Property Name="RaceTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RegistrationStatus">
+          <Key>
+            <PropertyRef Name="RegistrationStatusId" />
+            <PropertyRef Name="RegistrationStatus1" />
+          </Key>
+          <Property Name="RegistrationStatusId" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationStatus1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoldeId" />
+            <PropertyRef Name="RoleName" />
+          </Key>
+          <Property Name="RoldeId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Runner">
+          <Key>
+            <PropertyRef Name="RunnerId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="RunnerId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CountryCode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sponsorship">
+          <Key>
+            <PropertyRef Name="SponsorshipId" />
+            <PropertyRef Name="SponsorName" />
+            <PropertyRef Name="RegistrationId" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="SponsorshipId" Type="Int32" Nullable="false" />
+          <Property Name="SponsorName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="DateOfBirth" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="PositionId" />
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Comments" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Timesheet">
+          <Key>
+            <PropertyRef Name="TimesheetId" />
+            <PropertyRef Name="StaffId" />
+            <PropertyRef Name="StartDateTime" />
+            <PropertyRef Name="EndDateTime" />
+            <PropertyRef Name="PayAmount" />
+          </Key>
+          <Property Name="TimesheetId" Type="Int32" Nullable="false" />
+          <Property Name="StaffId" Type="Int32" Nullable="false" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Email" />
+            <PropertyRef Name="Password" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Volunteer">
+          <Key>
+            <PropertyRef Name="VolunteerId" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="Lastname" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="Gender" />
+          </Key>
+          <Property Name="VolunteerId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryCode" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="marathonEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Charity" EntityType="Self.Charity" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Event" EntityType="Self.Event" />
+          <EntitySet Name="EventType" EntityType="Self.EventType" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Marathon" EntityType="Self.Marathon" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="RaceKitOption" EntityType="Self.RaceKitOption" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" />
+          <EntitySet Name="Registration_Event" EntityType="Self.Registration_Event" />
+          <EntitySet Name="RegistrationStatus" EntityType="Self.RegistrationStatus" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Runner" EntityType="Self.Runner" />
+          <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="Timesheet" EntityType="Self.Timesheet" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" />
+          <EntitySet Name="Volunteer" EntityType="Self.Volunteer" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище marathonModelContainer" CdmEntityContainer="marathonEntities1">
+          <EntitySetMapping Name="Charity">
+            <EntityTypeMapping TypeName="marathonModel.Charity">
+              <MappingFragment StoreEntitySet="Charity">
+                <ScalarProperty Name="CharityId" ColumnName="CharityId" />
+                <ScalarProperty Name="CharityName" ColumnName="CharityName" />
+                <ScalarProperty Name="CharityDescription" ColumnName="CharityDescription" />
+                <ScalarProperty Name="CharityLogo" ColumnName="CharityLogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="marathonModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="marathonModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="marathonModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryFlag" ColumnName="CountryFlag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Event">
+            <EntityTypeMapping TypeName="marathonModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventTypeId" ColumnName="EventTypeId" />
+                <ScalarProperty Name="MarathonId" ColumnName="MarathonId" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="MaxParticipants" ColumnName="MaxParticipants" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventType">
+            <EntityTypeMapping TypeName="marathonModel.EventType">
+              <MappingFragment StoreEntitySet="EventType">
+                <ScalarProperty Name="EventTypeId" ColumnName="EventTypeId" />
+                <ScalarProperty Name="EventTypeName" ColumnName="EventTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="marathonModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Gender1" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marathon">
+            <EntityTypeMapping TypeName="marathonModel.Marathon">
+              <MappingFragment StoreEntitySet="Marathon">
+                <ScalarProperty Name="MarathonId" ColumnName="MarathonId" />
+                <ScalarProperty Name="MarathonName" ColumnName="MarathonName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="YearHeld" ColumnName="YearHeld" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="marathonModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+                <ScalarProperty Name="PayPeriod" ColumnName="PayPeriod" />
+                <ScalarProperty Name="PayRate" ColumnName="PayRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaceKitOption">
+            <EntityTypeMapping TypeName="marathonModel.RaceKitOption">
+              <MappingFragment StoreEntitySet="RaceKitOption">
+                <ScalarProperty Name="RaceKitOptionId" ColumnName="RaceKitOptionId" />
+                <ScalarProperty Name="RaceKitOption1" ColumnName="RaceKitOption" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registration">
+            <EntityTypeMapping TypeName="marathonModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="RunnerId" ColumnName="RunnerId" />
+                <ScalarProperty Name="RegistrationDateTime" ColumnName="RegistrationDateTime" />
+                <ScalarProperty Name="RaceKitOptionId" ColumnName="RaceKitOptionId" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="CharityId" ColumnName="CharityId" />
+                <ScalarProperty Name="SponsorshipTarget" ColumnName="SponsorshipTarget" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registration_Event">
+            <EntityTypeMapping TypeName="marathonModel.Registration_Event">
+              <MappingFragment StoreEntitySet="Registration_Event">
+                <ScalarProperty Name="RegistrationEventId" ColumnName="RegistrationEventId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="BibNumber" ColumnName="BibNumber" />
+                <ScalarProperty Name="RaceTime" ColumnName="RaceTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrationStatus">
+            <EntityTypeMapping TypeName="marathonModel.RegistrationStatus">
+              <MappingFragment StoreEntitySet="RegistrationStatus">
+                <ScalarProperty Name="RegistrationStatusId" ColumnName="RegistrationStatusId" />
+                <ScalarProperty Name="RegistrationStatus1" ColumnName="RegistrationStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="marathonModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoldeId" ColumnName="RoldeId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Runner">
+            <EntityTypeMapping TypeName="marathonModel.Runner">
+              <MappingFragment StoreEntitySet="Runner">
+                <ScalarProperty Name="RunnerId" ColumnName="RunnerId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsorship">
+            <EntityTypeMapping TypeName="marathonModel.Sponsorship">
+              <MappingFragment StoreEntitySet="Sponsorship">
+                <ScalarProperty Name="SponsorshipId" ColumnName="SponsorshipId" />
+                <ScalarProperty Name="SponsorName" ColumnName="SponsorName" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="marathonModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timesheet">
+            <EntityTypeMapping TypeName="marathonModel.Timesheet">
+              <MappingFragment StoreEntitySet="Timesheet">
+                <ScalarProperty Name="TimesheetId" ColumnName="TimesheetId" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="PayAmount" ColumnName="PayAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogin">
+            <EntityTypeMapping TypeName="marathonModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Volunteer">
+            <EntityTypeMapping TypeName="marathonModel.Volunteer">
+              <MappingFragment StoreEntitySet="Volunteer">
+                <ScalarProperty Name="VolunteerId" ColumnName="VolunteerId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

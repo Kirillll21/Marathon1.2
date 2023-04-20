@@ -28,7 +28,7 @@ namespace Marathon.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frm.GoBack();
+            
         }
 
         private void Frm_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)

@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,85 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\Charity.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Country.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DbConnect.cs" />
+    <Compile Include="Data\Event.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EventType.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Gender.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Marathon.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Position.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RaceKitOption.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Registration.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RegistrationStatus.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Registration_Event.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Role.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Runner.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Sponsorship.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Staff.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Timesheet.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\User.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserLogin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserLogin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserLogin.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserLogin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserLogin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UserLogin1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Volunteer.cs">
+      <DependentUpon>UserLogin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\FrameApp.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -93,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RunnerPages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,6 +228,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Data\UserLogin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserLogin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\UserLogin.edmx.diagram">
+      <DependentUpon>UserLogin.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,6 +244,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\UserLogin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserLogin.edmx</DependentUpon>
+      <LastGenOutput>UserLogin.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\UserLogin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserLogin.edmx</DependentUpon>
+      <LastGenOutput>UserLogin1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
